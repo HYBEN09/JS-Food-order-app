@@ -3,6 +3,11 @@ module.exports = {
     browser: true,
     es2021: true,
   },
+  settings: {
+    react: {
+      version: "detect",
+    },
+  },
   extends: [
     "eslint:recommended",
     "plugin:react/recommended",
@@ -17,5 +22,8 @@ module.exports = {
     sourceType: "module",
   },
   plugins: ["react", "react-hooks"],
-  rules: { "react/button-has-type": "warn" },
+  rules: {
+    "react/button-has-type": "warn",
+    "no-console": "warn",
+  },
 };
