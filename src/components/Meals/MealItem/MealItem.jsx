@@ -1,5 +1,5 @@
 import classes from "./MealItem.module.css";
-import { MealItemForm } from "./MealItemForm";
+import { MealItemForm } from "../../index";
 
 export const MealItem = (props) => {
   // 항상 소수점 이하 두 자리 수까지만 렌더링.

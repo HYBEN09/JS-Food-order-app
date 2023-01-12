@@ -1,7 +1,8 @@
-import { CartContext } from "./cart-context";
+import { CartContext } from "../index";
 
 //CartContext 데이터를 관리하고, 그 컨텍스트를 접근하려는 모든 컴포넌트에 제공하는 것
 export const CartProvider = (props) => {
+  //장바구니에 추가해야 할 항목을 얻습니다.
   const addItemHandler = (item) => {};
   const removeItemHandler = (id) => {};
 
