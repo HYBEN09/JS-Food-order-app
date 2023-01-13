@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Header, Cart, Meals } from "./components/index";
 
 //별도의 CartProvider 컴포넌트를 사용하면 App 컴포넌트를 간결하게 유지 가능
-import { CartProvider } from "./components/store/CartProvider";
+import { CartProvider } from "./store/CartProvider";
 
 function App() {
   //장바구니를 보이게 할지 여부를 관리
