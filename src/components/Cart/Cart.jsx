@@ -2,6 +2,7 @@ import classes from "./Cart.module.css";
 
 import { Modal } from "../index";
 
+
 export const Cart = (props) => {
   const cartItems = (
     <ul className={classes["cart-items"]}>
