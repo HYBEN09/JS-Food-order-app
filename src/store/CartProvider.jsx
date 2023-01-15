@@ -12,11 +12,11 @@ const cartReducer = (state, action) => {
     const updatedItems = state.items.concat(action.item);
 
     //장바구니 항목의 가격을 모두 더한 것.
-    const updatedTotalItems =
+    const updatedTotalAmount =
       state.totalAmount + action.item.price * action.item.amount;
     return {
       items: updatedItems,
-      totalAmount: updatedTotalItems,
+      totalAmount: updatedTotalAmount,
     };
   }
   return defaultCartState;

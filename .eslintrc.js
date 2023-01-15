@@ -23,7 +23,7 @@ module.exports = {
   },
   plugins: ["react", "react-hooks"],
   rules: {
-    "react/button-has-type": "warn",
+    // "react/button-has-type": "warn",
     "no-console": "warn",
   },
 };
