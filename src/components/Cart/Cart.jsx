@@ -13,10 +13,12 @@ export const Cart = (props) => {
   //장바구니 컨텍스트 항목의 길이가 0보다 큰지 확인 -> 장바구니 품목이 있는지
   const hasItems = cartCtx.items.length > 0;
 
-  //장바구니에서 항목을 추가하거나 삭제하는 함수
+  //* 장바구니에서 항목을 추가하거나 삭제하는 함수
   const cartItemRemoveHandler = (id) => {};
 
-  const cartItemAddHandler = (item) => {};
+  const cartItemAddHandler = (item) => {
+    cartCtx.addItem({ ...item, amount: 1 });
+  };
 
   const cartItems = (
     <ul className={classes["cart-items"]}>

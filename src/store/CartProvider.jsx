@@ -66,6 +66,7 @@ export const CartProvider = (props) => {
     dispatchCartAction({ type: "ADD", item: item });
   };
 
+  //장바구니에 삭제해야 할 항목을 얻습니다.
   const removeItemFromCartHandler = (id) => {
     dispatchCartAction({ type: "REMOVE", id: id });
   };
