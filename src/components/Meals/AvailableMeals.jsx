@@ -1,35 +1,38 @@
 import classes from "./AvailableMeals.module.css";
 import { MealItem, Card } from "../index";
-
-const DUMMY_MEALS = [
-  {
-    id: "m1",
-    name: "Sushi",
-    description: "Finest fish and veggies",
-    price: 22.99,
-  },
-  {
-    id: "m2",
-    name: "Schnitzel",
-    description: "A german specialty!",
-    price: 16.5,
-  },
-  {
-    id: "m3",
-    name: "Barbecue Burger",
-    description: "American, raw, meaty",
-    price: 12.99,
-  },
-  {
-    id: "m4",
-    name: "Green Bowl",
-    description: "Healthy...and green...",
-    price: 18.99,
-  },
-];
+import { useState, useEffect } from "react";
 
 export const AvailableMeals = () => {
-  const mealList = DUMMY_MEALS.map((meal) => (
+  // 데이터가 그곳에 있을 경우에 컴포넌트를 업데이트해야 합니다
+  // 데이터가 변경되고 컴포넌트가 변경 후 다시 평가되어야 하는 경우 상태(state)가 필요
+  const [meals, setMeals] = useState([]);
+
+  //firebase 사용
+  useEffect(() => {
+    const fetchMeals = async () => {
+      const response = await fetch(
+        "https://react-http-e9efe-default-rtdb.firebaseio.com/meals.json"
+      );
+      const responseData = await response.json();
+
+      const loadedMeals = [];
+
+      for (const key in responseData) {
+        loadedMeals.push({
+          id: key,
+          name: responseData[key].name,
+          description: responseData[key].description,
+          price: responseData[key].price,
+        });
+      }
+
+      setMeals(loadedMeals);
+    };
+    fetchMeals();
+    //컴포넌트가 처음 로딩될 때만 실행
+  }, []);
+
+  const mealList = meals.map((meal) => (
     <MealItem
       id={meal.id}
       key={meal.id}
