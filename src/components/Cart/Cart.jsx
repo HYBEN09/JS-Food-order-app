@@ -19,7 +19,9 @@ export const Cart = (props) => {
   const hasItems = cartCtx.items.length > 0;
 
   //* 장바구니에서 항목을 추가하거나 삭제하는 함수
-  const cartItemRemoveHandler = (id) => {};
+  const cartItemRemoveHandler = (id) => {
+    cartCtx.removeItem(id);
+  };
 
   const cartItemAddHandler = (item) => {
     cartCtx.addItem({ ...item, amount: 1 });
