@@ -7,12 +7,11 @@ export const AvailableMeals = () => {
   // 데이터가 변경되고 컴포넌트가 변경 후 다시 평가되어야 하는 경우 상태(state)가 필요
   const [meals, setMeals] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [httpError, setHttpError] = useState();
 
   //firebase 사용
   useEffect(() => {
     const fetchMeals = async () => {
-      setIsLoading(true);
-
       const response = await fetch(
         "https://react-http-e9efe-default-rtdb.firebaseio.com/meals.json"
       );
@@ -37,14 +36,25 @@ export const AvailableMeals = () => {
       setMeals(loadedMeals);
       setIsLoading(false);
     };
-    fetchMeals();
-    //컴포넌트가 처음 로딩될 때만 실행
+
+    fetchMeals().catch((error) => {
+      setIsLoading(false);
+      setHttpError(error.message);
+    });
   }, []);
 
   if (isLoading) {
     return (
       <section className={classes.MealsLoading}>
         <p>Loading...</p>
+      </section>
+    );
+  }
+
+  if (httpError) {
+    return (
+      <section className={classes.MealsError}>
+        <p>{httpError}</p>
       </section>
     );
   }
